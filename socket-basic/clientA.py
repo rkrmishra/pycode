@@ -10,7 +10,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     data = {
         "type": "request",
         "data": 0,
-        "time": datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+        "time": datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S:%f")
         }
     dict_to_data = pickle.dumps(data)
     s.sendall(dict_to_data)

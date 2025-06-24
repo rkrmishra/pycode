@@ -12,6 +12,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((config['HOST'], config['PORT']))
     while True:
         user_input = input("[ClientA] Enter number: ")
+        start_time = datetime.datetime.now()
         if user_input.isdigit():
             user_input = int(user_input)
             cmd = ""
@@ -31,4 +32,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.close()
             break
         rcv_data = s.recv(1024)
+        end_time = datetime.datetime.now()
         print('[ClientA] Rcvd from Srv: ', pickle.loads(rcv_data))
+        print(f"[ClientA] Time taken: {end_time - start_time}")
